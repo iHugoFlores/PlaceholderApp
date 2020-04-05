@@ -23,11 +23,20 @@ class TabController: UITabBarController {
     
     func downloadData() {
         spinnerView.showSpinner(in: self.view)
-        PhotosAPI.getMockData(onDone: downloadHandler(data:))
+        PhotosAPI.downloadPhotoData(onDone: downloadHandler(data:))
     }
     
     func downloadHandler(data arr: [Photo]?) {
         spinnerView.stopSpinner()
+
+        if arr == nil {
+            let alert = UIAlertController(title: "Error", message: "Error Downloading the Data", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Try Again", style: UIAlertAction.Style.cancel, handler: { action in
+                self.downloadData()
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
         
         var vc = self.viewControllers?[0] as! UINavigationController
         var view = vc.viewControllers.first as! TabNotification
@@ -37,15 +46,5 @@ class TabController: UITabBarController {
         view = vc.viewControllers.first as! TabNotification
         view.updateDataFromRoot(data: arr)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
