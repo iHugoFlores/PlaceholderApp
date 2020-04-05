@@ -10,7 +10,8 @@ import Foundation
 
 class PhotosAPI {
     private static let dataJsonFilename: String = "photos"
-    private static let mockResponseTime: Double = 0.1
+    private static let endpoint: String = "https://jsonplaceholder.typicode.com/photos"
+    private static let mockResponseTime: Double = 5
     
     // MARK: Mock Implementations
     static func getMockData(onDone: @escaping ([Photo]?) -> ()) {
@@ -25,27 +26,39 @@ class PhotosAPI {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
+    static func downloadPhotoData(onDone: @escaping ([Photo]?) -> ()) {
+        downloadData(from: URL(string: endpoint)!) { data, response, error in
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async() {
+                    onDone(nil)
+                }
+                return
+            }
+            guard let photoData: [Photo]? = JSONUtil.parseDataToModel(from: data) else {
+                DispatchQueue.main.async() {
+                    onDone(nil)
+                }
+                return
+            }
+
+            DispatchQueue.main.async() {
+                onDone(photoData)
+            }
+        }
+    }
+    
     static func downloadImage(from url: URL, onDone: @escaping (Data?) -> ()) {
         downloadData(from: url) { data, response, error in
             guard let data = data, error == nil else {
-                onDone(nil)
+                DispatchQueue.main.async() {
+                    onDone(nil)
+                }
                 return
             }
+
             DispatchQueue.main.async() {
                 onDone(data)
             }
         }
-        /*
-        do {
-            let res = try Data(contentsOf: url)
-            DispatchQueue.main.async() {
-                onDone(res)
-            }
-        } catch {
-            DispatchQueue.main.async() {
-                onDone(nil)
-            }
-        }
-        */
     }
 }
