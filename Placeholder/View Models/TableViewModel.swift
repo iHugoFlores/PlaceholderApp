@@ -8,7 +8,11 @@
 
 import UIKit
 
-class TableViewModel: GenericDataSource<Photo>, UITableViewDataSource {
+class TableViewModel: GenericDataSource<Photo>, UITableViewDataSource, UITableViewDelegate {
+    
+    private let segueIdentifier: String = "tableToDetails"
+    var performSegue: ((String, IndexPath) -> ())?
+    var valueToPass: Photo?
 
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -27,18 +31,9 @@ class TableViewModel: GenericDataSource<Photo>, UITableViewDataSource {
         return cell
     }
     
-    override func onDataDidSet() {
-        print("Table View must update")
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        valueToPass = data?[indexPath.row]
+        performSegue!(segueIdentifier, indexPath)
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

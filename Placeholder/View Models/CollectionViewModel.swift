@@ -13,15 +13,7 @@ class CollectionViewModel: GenericDataSource<Photo>, UICollectionViewDataSource,
     private let segueIdentifier: String = "collectionToDetails"
     var performSegue: ((String, IndexPath) -> ())?
     weak var root: UICollectionView?
-
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-        print("Prepare")
-    }
+    var valueToPass: Photo?
 
     // MARK: UICollectionViewDataSource
 
@@ -76,18 +68,8 @@ class CollectionViewModel: GenericDataSource<Photo>, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("Cell selected: \(indexPath)")
-        print(performSegue)
+        valueToPass = data![indexPath.row]
         performSegue!(segueIdentifier, indexPath)
     }
-
-    // MARK: UICollectionViewDelegate
-
-
-    /*
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
 
 }
