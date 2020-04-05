@@ -18,7 +18,7 @@ class CollectionCellViewModel {
         }
     }
     
-    var image: UIImage? {
+    var image: Data? {
         didSet {
             guard let onImageSet = onImageSet else { return }
             onImageSet()
@@ -30,8 +30,7 @@ class CollectionCellViewModel {
     }
     
     func setDownloadedImage(image imgData: Data?) {
-        guard let image = imgData else { return }
-        self.image = UIImage(data: image)
+        self.image = imgData
     }
 
 }
