@@ -46,7 +46,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="slq-5g-81X" kind="show" id="t3u-nd-01I"/>
+                                            <segue destination="slq-5g-81X" kind="show" identifier="tableToDetails" id="t3u-nd-01I"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -70,10 +70,10 @@
             </objects>
             <point key="canvasLocation" x="942.02898550724649" y="-717.1875"/>
         </scene>
-        <!--View Controller-->
+        <!--Detail Controller-->
         <scene sceneID="5il-A9-x5q">
             <objects>
-                <viewController id="slq-5g-81X" sceneMemberID="viewController">
+                <viewController id="slq-5g-81X" customClass="DetailController" customModule="Placeholder" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MvD-cq-Fbm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -176,7 +176,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Qjz-D4-1uf"/>
+        <segue reference="t3u-nd-01I"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
