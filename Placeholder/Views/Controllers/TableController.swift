@@ -16,10 +16,13 @@ class TableController: UIViewController, TabNotification {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = viewModel
         tableView.dataSource = viewModel
-        tableView.decelerationRate = UIScrollView.DecelerationRate.fast
-        
-        //viewController.test()
+        viewModel.performSegue = self.performSegue
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tabBarController?.tabBar.isHidden = false
     }
     
     func updateDataFromRoot(data photos: [Photo]?) {
@@ -27,14 +30,18 @@ class TableController: UIViewController, TabNotification {
         tableView.reloadData()
     }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let vc = segue.destination as? DetailController
+        vc?.viewModel.photo = viewModel.valueToPass
+        viewModel.valueToPass = nil
+        tabBarController?.tabBar.isHidden = true
     }
-    */
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        return viewModel.valueToPass != nil
+    }
 
 }
