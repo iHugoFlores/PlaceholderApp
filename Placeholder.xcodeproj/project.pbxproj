@@ -28,6 +28,7 @@
 		F0CA0C2824394EA900EDB04A /* CollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA0C2724394EA900EDB04A /* CollectionViewModel.swift */; };
 		F0CA0C2A2439558800EDB04A /* CollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA0C292439558800EDB04A /* CollectionCellViewModel.swift */; };
 		F0CA0C2C243957FA00EDB04A /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0CA0C2B243957FA00EDB04A /* CollectionCell.swift */; };
+		F0EE0E20243A07C9000BC749 /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0EE0E1F243A07C9000BC749 /* DetailsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		F0CA0C2724394EA900EDB04A /* CollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewModel.swift; sourceTree = "<group>"; };
 		F0CA0C292439558800EDB04A /* CollectionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCellViewModel.swift; sourceTree = "<group>"; };
 		F0CA0C2B243957FA00EDB04A /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		F0EE0E1F243A07C9000BC749 /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				F0CA0C1B2439169400EDB04A /* TableViewModel.swift */,
 				F0CA0C1D24392BD900EDB04A /* SpinnerView.swift */,
 				F0CA0C2724394EA900EDB04A /* CollectionViewModel.swift */,
+				F0EE0E1F243A07C9000BC749 /* DetailsViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				F0CA0C082439030E00EDB04A /* DetailController.swift in Sources */,
 				F0CA0BEA2438FCF900EDB04A /* SceneDelegate.swift in Sources */,
 				F0CA0C0D243906B700EDB04A /* JSONUtil.swift in Sources */,
+				F0EE0E20243A07C9000BC749 /* DetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
