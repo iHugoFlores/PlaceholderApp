@@ -40,7 +40,7 @@ class CollectionCell: UICollectionViewCell {
     }
     
     func setImage() {
-        albumImage.image = viewModel.image
+        albumImage.image = UIImage(data: viewModel.image!)
     }
 
     required init?(coder aDecoder: NSCoder) {
