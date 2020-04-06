@@ -29,7 +29,6 @@ class DetailController: UIViewController {
         super.viewDidLoad()
         
         scrollView.delegate = self
-        print("Method set?")
         viewModel.onImageSet = setImage
 
         setUpMain()
